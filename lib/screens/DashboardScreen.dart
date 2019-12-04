@@ -92,7 +92,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                     onPressed: widget.onMenuPressed,
                   ),
                   Text(
-                    "Dashboard",
+                    "Home",
                     style: TextStyle(color: white, fontSize: 20.0),
                   ),
                   CircleAvatar(
