@@ -20,8 +20,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold( body: SingleChildScrollView(
       child: Stack(
         children: <Widget>[
           ClipPath(

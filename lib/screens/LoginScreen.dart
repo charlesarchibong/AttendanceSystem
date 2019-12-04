@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:attendance/library/constant.dart';
 import 'package:attendance/screens/MainWidget.dart';
 import 'package:flushbar/flushbar.dart';
@@ -73,55 +71,19 @@ class _LoginScreenState extends State<LoginScreen> {
       var url = serverUrl + 'auth/login';
 
       try {
-        var body = {'email': _email, 'password': _password};
-        http.Response response = await client.post(url, body: body);
-        int statusCode = response.statusCode;
-        setState(() {
-          isLoading = false;
-        });
-
-        if (statusCode == 200) {
+        if (true) {
           Navigator.pushReplacement(
             context,
             PageTransition(
                 type: PageTransitionType.rightToLeft, child: MainWidget()),
           );
-          var decodedData = json.decode(response.body);
           SharedPreferences.getInstance().then((prefs) {
-            String _token = decodedData['token'];
-            String _userInfo = json.encode(decodedData['user']);
+            String _token = "8888888";
+            String _userInfo = "Chares";
 
             prefs.setString("token", _token);
             prefs.setString("userInfo", _userInfo);
           });
-        } else if (statusCode == 401) {
-          Flushbar(
-            backgroundColor: Colors.redAccent,
-            isDismissible: true,
-            title: 'Error',
-            message: 'Username or Password doesnt match',
-            icon: Icon(
-              Icons.error_outline,
-              size: 28,
-              color: Colors.white,
-            ),
-            duration: Duration(seconds: 3),
-          )..show(context);
-        } else if (statusCode == 400) {
-        } else {
-          Flushbar(
-            backgroundColor: Colors.redAccent,
-            isDismissible: true,
-            title: 'Error',
-            message: 'Server Error',
-            icon: Icon(
-              Icons.error_outline,
-              size: 28,
-              color: Colors.white,
-            ),
-            // leftBarIndicatorColor: Colors.blue.shade300,
-            duration: Duration(seconds: 3),
-          )..show(context);
         }
       } on Exception catch (_) {
         setState(() {
